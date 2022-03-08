@@ -1,6 +1,5 @@
 package demo;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class Main {
@@ -12,14 +11,17 @@ public class Main {
         while(true) {
             System.out.print("How many letters should be read: ");
             String input1 = sc.nextLine();
-            if(input1.matches("\\d+")) {
-                int input2 = Integer.parseInt(input1);
-                if (input2 == -1) {
-                    break;
-                }
-                System.out.println("\n\u001B[33m" + input2 + " letters were taken from the text:\u001B[0m\n" + fh.readFile(input2) + "\n");
+            System.out.print("How many times should it be read: ");
+            String input2 = sc.nextLine();
+            if(input1.equals("-1")||input2.equals("-1")){
+                break;
+            }
+            if(input1.matches("\\d+")&&input2.matches("\\d+")){
+                int intInput1 = Integer.parseInt(input1);
+                int intInput2 = Integer.parseInt(input2);
+                System.out.println(fh.readText(intInput1, intInput2));
             } else {
-                System.out.println("Please write a number.");
+                System.out.println("Please write positive numbers only...");
             }
         }
 
